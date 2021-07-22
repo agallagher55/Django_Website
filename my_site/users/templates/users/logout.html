@@ -1,0 +1,10 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<h2>You have been logged out!</h2>
+<span class="muted-text bt">
+    <a href="{% url 'users-login' %}">Log back in.</a>
+</span>
+
+{% endblock content%}

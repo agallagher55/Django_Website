@@ -1,0 +1,16 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn-primary" type="submit">Register</button>
+</form>
+
+<hr>
+<div class="mt-4">
+    <span class="text-muted">Already have an account? <a href="{% url 'users-login' %}">Login</a></span>
+</div>
+
+{% endblock content %}

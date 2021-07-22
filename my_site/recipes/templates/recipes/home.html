@@ -1,0 +1,50 @@
+{% extends "recipes/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>Recipes</h1>
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-9">
+            {% for type in recipe_types %}
+            {% if type.count > 0 %}
+            <h4>{{ type.0.meal_type }}</h4>
+            <ol class="list-group list-group-numbered">
+                {% for recipe in type %}
+                <li class="list-group-item mb-3">
+                    {{ recipe.name }}
+
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mt-2">
+                        <a class="btn btn-primary btn-sm" href="{% url 'recipe-details' pk=recipe.id %}" role="button">Details</a>
+                        <a class="btn btn-danger btn-sm" href="{% url 'recipe-delete' pk=recipe.id %}" role="button">Delete</a>
+                    </div>
+                </li>
+
+                {% endfor %}
+            </ol>
+            <hr>
+            {% endif %}
+            {% endfor %}
+            <div class="d-grid">
+                <a class="btn btn-success mb-3" href="{% url 'recipe-add' %}" role="button">Add new</a>
+            </div>
+        </div>
+
+        <div class="col">
+            <h2>All</h2>
+            <ol class="list-group list-group-numbered">
+                {% for recipe in recipes %}
+                <li class="list-group-item mb-3">
+                    {{ recipe.name }} - {{ recipe.meal_type }}
+                </li>
+                {% endfor %}
+            </ol>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content%}

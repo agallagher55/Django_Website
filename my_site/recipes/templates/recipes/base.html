@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'recipes/css/main.css'%}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Recipes</title>
+    {% endif %}
+
+</head>
+
+<body>
+
+<div class="container-fluid bg-dark min-vh-100">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <a href="#" class="navbar-brand text-light">A.G.</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{% url 'recipes-home' %}" class="nav-link">RECIPES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'recipes-about' %}" class="nav-link">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'recipes-contact' %}" class="nav-link">CONTACT</a>
+                    </li>
+
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href="{% url 'users-profile' %}" class="nav-link">PROFILE</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'users-logout' %}" class="nav-link">LOGOUT</a>
+                    </li>
+
+                    {% else %}
+                    <li class="nav-item">
+                        <a href="{% url 'users-login' %}" class="nav-link">LOGIN</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'users-register' %}" class="nav-link">REGISTER</a>
+                    </li>
+
+                    {% endif %}
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id="messages">
+        {% block messages %}
+        {% if messages %}
+        {% for message in messages %}
+        {% if message.tags %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endblock messages %}
+    </div>
+
+    <div class="container bg-dark text-light">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

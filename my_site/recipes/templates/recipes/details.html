@@ -1,0 +1,25 @@
+{% extends 'recipes/base.html'%}
+
+{% block title%} {{ recipe.title }} {% endblock %}
+
+<h1>Recipe Details</h1>
+
+{% block content %}
+
+<h2>{{ recipe.name }}</h2>
+<div class="card mb-4">
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Ingredients: {{ recipe.ingredients }}</li>
+            <li class="list-group-item">Meal type: {{ recipe.meal_type }}</li>
+            <li class="list-group-item">Date Posted: {{ recipe.date_posted }}</li>
+            <li class="list-group-item">Posted By: {{ recipe.author }}</li>
+        </ul>
+    </div>
+</div>
+
+<button class="btn-primary">
+    <a class="text-light" href="{% url 'recipes-home' %}">Back</a>
+</button>
+
+{% endblock content %}
