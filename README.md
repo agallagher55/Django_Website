@@ -8,7 +8,7 @@ Functionality:
 - Login, logout, register
 - Create, Read, and Delete recipes
 
-<img src="mysite/examples/base.jpg">
-<img src="mysite/examples/base.jpg">
-<img src="mysite/examples/base.jpg">
+<img src="./mysite/examples/base.jpg">
+<img src=".mysite/examples/login.jpg">
+<img src="/mysite/examples/base.jpg">
 <img src="mysite/examples/base.jpg">
