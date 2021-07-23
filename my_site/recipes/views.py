@@ -59,9 +59,8 @@ def add_recipe(request):
         form = RecipeForm(request.POST)
 
         if form.is_valid():
-            # TODO: Clean data?
             form.save()
-            return redirect('recipes-home')  # TODO: Make confirmation page
+            return redirect('recipes-home')  # TODO: Add Message - Recipe Saved!
 
     else:
         form = RecipeForm
